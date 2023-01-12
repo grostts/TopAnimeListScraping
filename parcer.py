@@ -103,6 +103,16 @@ def get_data(anime_count):
             )
             print(f"[INFO] Processed the {anime_name} page.")
 
+        print(f"Iteration #{iteration_count} is completed. Iteration left #{iteration_count - 1}")
+        iteration_count -= 1
+        if iteration_count == 0:
+            print(f"Myanimelist scraping is completed!")
+        time.sleep(random.randrange(2, 5))
+
+    """Create json file"""
+    with open("anime_data.json", "a", encoding="utf-8") as file:
+        json.dump(animes_data_list, file, indent=4, ensure_ascii=False)
+
 
     """Time calculation"""
     finish_time = time.time() - start_time
